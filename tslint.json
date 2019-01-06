@@ -1,0 +1,29 @@
+{
+    "extends": ["tslint:latest", "tslint-config-prettier"],
+    "linterOptions": {
+        "include": ["**/*.ts"],
+        "exclude": [
+            "node_modules",
+            "**/node_modules/**",
+            "**/*.spec.int.ts",
+            "**/*.spec.ts",
+            "**/*.d.ts"
+        ]
+    },
+    "rules": {
+        "no-namespace": false,
+        "no-reference": false,
+        "no-implicit-dependencies": false,
+        "no-submodule-imports": false,
+        "callable-types": false,
+        "no-empty-interface": false,
+        "no-object-literal-type-assertion": false,
+        "object-literal-sort-keys": false,
+        "ordered-imports": false,
+        "interface-name": false,
+        "no-console": false,
+        "interface-over-type-literal": false,
+        "variable-name": false,
+        "adjacent-overload-signatures": false
+    }
+}

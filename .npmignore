@@ -1,0 +1,10 @@
+docs/
+.idea/
+examples/
+wallaby.js
+tslint.json
+tsconfig.json
+./.env
+./.env.sample
+./.secret
+./lib/@test-utils

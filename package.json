@@ -1,0 +1,83 @@
+{
+  "name": "firebag",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cjanietz/firebag.git"
+  },
+  "scripts": {
+    "clean": "del-cli \"+(lib|bin)/**/*.js\" !\"**/node_modules/**\" && del-cli \"+(lib|bin)/**/*.d.ts\"  !\"**/node_modules/**\"",
+    "build": "tsc",
+    "test": "jest",
+    "test:ci": "jest --coverage --ci --forceExit --detectOpenHandles --runInBand",
+    "lint:ts": "tsc --noEmit",
+    "lint:tslint": "tslint lib/**/*.ts",
+    "lint": "npm run lint:ts && npm run lint:tslint",
+    "prettier": "prettier --write ./**/*.{js,ts,jx,tsx,css,json,md} --ignore-path ./.prettierignore",
+    "precommit:prettier": "pretty-quick --staged",
+    "precommit": "npm run lint && npm run test && npm run precommit:prettier",
+    "prepack": "npm run clean && npm run lint && npm run build"
+  },
+  "husky": {
+    "pre-commit": "npm run precommit"
+  },
+  "author": "Christopher Janietz",
+  "license": "ISC",
+  "peerDependencies": {
+    "firebase-admin": "^6.4.0"
+  },
+  "devDependencies": {
+    "@types/camelcase": "^4.1.0",
+    "@types/debug": "0.0.31",
+    "@types/dotenv": "^6.1.0",
+    "@types/jest": "^23.3.11",
+    "@types/jest-each": "^0.3.3",
+    "@types/lodash": "^4.14.119",
+    "@types/lodash.groupby": "^4.6.4",
+    "class-validator": "^0.9.1",
+    "del-cli": "^1.1.0",
+    "dotenv": "^6.2.0",
+    "firebase-admin": "^6.4.0",
+    "husky": "^1.3.1",
+    "jest": "^23.6.0",
+    "jest-each": "^23.6.0",
+    "prettier": "^1.15.3",
+    "pretty-quick": "^1.8.0",
+    "reflect-metadata": "^0.1.12",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.0",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  },
+  "dependencies": {
+    "camelcase": "^5.0.0",
+    "class-transformer": "^0.2.0",
+    "lazy-promise": "^4.0.0",
+    "lodash.groupby": "^4.6.0",
+    "lodash.intersection": "^4.4.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "lib/**/*.ts",
+      "!**/*.d.ts"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "testRegex": "./(.*/__tests__/.*\\.(test|spec))(\\.int)?\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testEnvironment": "node",
+    "setupTestFrameworkScriptFile": "./setupTests.ts"
+  }
+}
